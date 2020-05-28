@@ -1,14 +1,17 @@
 import React from 'react';
-import {SegmentMenu} from "../components/SegmentMenu";
-import {View,Text} from "react-native";
+import {FlatList, ScrollView} from "react-native";
+import {StudentList} from "../components/StudentList";
+import {students} from "../../students";
 
 
 const StudentActiveScreen = () => {
     return (
-       <SegmentMenu/>
-       <View>
-
-       </View>
+        <ScrollView>
+            <FlatList data={students} keyExtractor={student => student.id.toString()} renderItem={({item}) => {
+                console.log(students)
+                return <StudentList student={item}/>
+            }}/>
+        </ScrollView>
     );
 };
 
