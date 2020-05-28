@@ -1,18 +1,18 @@
 import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
-import StudentScreen from "../screens/StudentScreen";
+import StudentActiveScreen from "../screens/StudentActiveScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import {Ionicons} from '@expo/vector-icons'
 
 const bottomTabsConfig = {
     Students: {
-        screen: StudentScreen,
+        screen: StudentActiveScreen,
         navigationOptions: {
             tabBarLabel: 'Ученики',
             tabBarIcon: info => (
-                <Ionicons name='ios-albums' size={25} color={info.tintColor}/>
+                <Ionicons name='ios-people' size={25} color={info.tintColor}/>
             )
         }
     },
@@ -21,7 +21,7 @@ const bottomTabsConfig = {
         navigationOptions: {
             tabBarLabel: 'Оповещения',
             tabBarIcon: info => (
-                <Ionicons name='ios-star' size={25} color={info.tintColor}/>
+                <Ionicons name='ios-notifications' size={25} color={info.tintColor}/>
             )
         }
     },
@@ -30,18 +30,17 @@ const bottomTabsConfig = {
         navigationOptions: {
             tabBarLabel: 'Профиль',
             tabBarIcon: info => (
-                <Ionicons name='ios-star' size={25} color={info.tintColor}/>
+                <Ionicons name='ios-person' size={25} color={info.tintColor}/>
             )
         }
     }
 }
 
 const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
-    activeTintColor: '#fff',
+    activeTintColor: '#8e8e8e',
     shifting: true,
     barStyle: {
-        backgroundColor: '#fff'
+        backgroundColor: '#386ac7'
     }
 })
-
 export const AppNavigation = createAppContainer(BottomNavigator)

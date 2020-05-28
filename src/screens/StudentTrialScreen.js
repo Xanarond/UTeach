@@ -1,10 +1,12 @@
 import React from 'react';
 import {Text, View} from "react-native";
+import {SegmentMenu} from "../components/SegmentMenu";
 
 
-function StudentScreen(props) {
+function StudentTrialScreen(props) {
     return (
         <View>
+            <SegmentMenu/>
             <div>
                 <Text>StudentScreen</Text>
             </div>
@@ -12,4 +14,4 @@ function StudentScreen(props) {
     );
 }
 
-export default StudentScreen;
+export default StudentTrialScreen;
