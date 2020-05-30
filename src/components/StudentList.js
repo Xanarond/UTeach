@@ -2,7 +2,7 @@ import React from 'react';
 import {Body, Button, Left, List, ListItem, Right, Text, Thumbnail} from 'native-base';
 import {StyleSheet} from "react-native";
 
-export function StudentList({student}) {
+export function StudentList({student, navigation}) {
     return (
         <List style={styles.textWrap}>
             <ListItem thumbnail>
@@ -16,7 +16,7 @@ export function StudentList({student}) {
                     <Text note numberOfLines={1}>{student.text}</Text>
                 </Body>
                 <Right>
-                    <Button transparent>
+                    <Button transparent onPress={() => navigation.push('Profile')}>
                         <Text>View</Text>
                     </Button>
                 </Right>

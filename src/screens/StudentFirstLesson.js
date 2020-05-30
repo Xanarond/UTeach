@@ -3,9 +3,8 @@ import {FlatList, ScrollView} from "react-native";
 import {students} from "../../students";
 import {StudentList} from "../components/StudentList";
 
-
-function StudentTrialScreen(props) {
-    const data = students.filter(student => !student.firstLesson && student.trialLesson)
+const StudentFirstLessonScreen = () => {
+    const data = students.filter(student => student.firstLesson && !student.trialLesson)
     return (
         <ScrollView>
             <FlatList data={data} keyExtractor={student => student.id.toString()} renderItem={({item}) => {
@@ -13,6 +12,6 @@ function StudentTrialScreen(props) {
             }}/>
         </ScrollView>
     );
-}
+};
 
-export default StudentTrialScreen;
+export default StudentFirstLessonScreen;

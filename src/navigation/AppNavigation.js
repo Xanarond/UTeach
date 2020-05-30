@@ -1,14 +1,57 @@
 import React from 'react'
 import {createAppContainer} from 'react-navigation'
 import {createMaterialBottomTabNavigator} from 'react-navigation-material-bottom-tabs'
+import {createMaterialTopTabNavigator} from 'react-navigation-tabs';
+import {createDrawerNavigator} from 'react-navigation-drawer';
 import StudentActiveScreen from "../screens/StudentActiveScreen";
 import NotificationScreen from "../screens/NotificationScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import {Ionicons} from '@expo/vector-icons'
+import StudentTrialScreen from "../screens/StudentTrialScreen";
+import StudentFirstLessonScreen from "../screens/StudentFirstLesson";
+import AboutScreen from "../screens/AboutScreen";
+
+/*const ProfileNavigator = createStackNavigator(
+    {
+        Main: StudentActiveScreen,
+        Profile: StudentProfileScreen
+    }
+)*/
+
+
+const topTabsConfig = {
+    StudentsActive: {
+        screen: StudentActiveScreen,
+        navigationOptions: {
+            tabBarLabel: 'Абонемент',
+            labelStyle: {
+                fontSize: 12,
+            },
+            tabStyle: {
+                width: 100,
+            }
+        }
+    },
+    StudentTrials: {
+        screen: StudentTrialScreen,
+        navigationOptions: {
+            tabBarLabel: 'Пробные',
+        }
+    },
+    Booked: {
+        screen: StudentFirstLessonScreen,
+        navigationOptions: {
+            tabBarLabel: 'Первое занятие',
+        }
+    },
+}
+
+
+const TopTabNavigator = createMaterialTopTabNavigator(topTabsConfig)
 
 const bottomTabsConfig = {
     Students: {
-        screen: StudentActiveScreen,
+        screen: TopTabNavigator,
         navigationOptions: {
             tabBarLabel: 'Ученики',
             tabBarIcon: info => (
@@ -35,7 +78,6 @@ const bottomTabsConfig = {
         }
     }
 }
-
 const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
     activeTintColor: '#8e8e8e',
     shifting: true,
@@ -43,4 +85,31 @@ const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
         backgroundColor: '#386ac7'
     }
 })
-export const AppNavigation = createAppContainer(BottomNavigator)
+
+const MainNavigator = createDrawerNavigator(
+    {
+        PostTabs: {
+            screen: BottomNavigator,
+            navigationOptions: {
+                drawerLabel: 'Главная'
+                // drawerIcon: <Ionicons name='ios-star' />
+            }
+        },
+        About: {
+            screen: AboutScreen,
+            navigationOptions: {
+                drawerLabel: 'О приложении'
+            }
+        }
+    },
+    {
+        contentOptions: {
+            activeTintColor: '#386ac7',
+            labelStyle: {
+                fontFamily: 'open-bold'
+            }
+        }
+    }
+)
+
+export const AppNavigation = createAppContainer(MainNavigator)
