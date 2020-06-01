@@ -1,14 +1,22 @@
 import React from 'react';
-import {Text, View} from "react-native";
+import { Text, TextInput, View } from 'react-native';
 
-function LoginScreen(props) {
+export default class LoginScreen extends React.Component {
+  render() {
     return (
-        <View>
-            <div>
-                <Text>Open up App.js to start working on your app!</Text>
-            </div>
-        </View>
+      <View>
+        <Text> Login </Text>
+        <TextInput
+          value=""
+          onChangeText={(input) => console.log(input)}
+          placeholder="Email"
+        />
+        <TextInput
+          value=""
+          onChangeText={(input) => console.log(input)}
+          placeholder="Password"
+        />
+      </View>
     );
+  }
 }
-
-export default LoginScreen;
