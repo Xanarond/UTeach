@@ -1,39 +1,25 @@
-import React, { Component } from 'react';
-import {
-  StyleSheet, Text, View, Button,
-} from 'react-native';
-import { bindActionCreators } from 'redux';
+import React from 'react';
+import firebase from 'firebase';
+import { Text, View, Button } from 'react-native';
 import { connect } from 'react-redux';
-import { addcount, subtract } from '../store/actions/index';
+import styles from '../../styles';
 
-class ProfileScreen extends Component {
+class ProfileScreen extends React.Component {
   render() {
     return (
-      <View style={style.center}>
-        <Text>
-          ProfileScreen
-          {this.props.counter}
-        </Text>
-        <Button title="Add" onPress={() => this.props.addcount()} />
-        <Button title="Subtract" onPress={() => this.props.subtract()} />
+      <View style={styles.container}>
+        <Text> Profile</Text>
+        <Text>{this.props.user.email}</Text>
+        <Text>{this.props.user.username}</Text>
+        <Text>{this.props.user.bio}</Text>
+        <Button title="Logout" onPress={() => firebase.auth().signOut()} />
       </View>
     );
   }
 }
 
-const mapDispatchToProps = (dispatch) => bindActionCreators({ addcount, subtract }, dispatch);
-
 const mapStateToProps = (state) => ({
-  counter: state,
+  user: state.user,
 });
 
-
-const style = StyleSheet.create({
-  center: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(ProfileScreen);
+export default connect(mapStateToProps)(ProfileScreen);

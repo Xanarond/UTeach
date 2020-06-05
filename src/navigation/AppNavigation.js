@@ -22,6 +22,7 @@ const topTabsConfig = {
   StudentsActive: {
     screen: StudentActiveScreen,
     navigationOptions: {
+      header: 'Ученики',
       tabBarLabel: 'Абонемент',
       labelStyle: {
         fontSize: 12,
@@ -34,13 +35,13 @@ const topTabsConfig = {
   StudentTrials: {
     screen: StudentTrialScreen,
     navigationOptions: {
-      tabBarLabel: 'Пробные',
+      tabBarLabel: 'Разовая оплата',
     },
   },
   Booked: {
     screen: StudentFirstLessonScreen,
     navigationOptions: {
-      tabBarLabel: 'Первое занятие',
+      tabBarLabel: 'Пробное занятие',
     },
   },
 };

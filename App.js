@@ -4,9 +4,11 @@ import AppLoading from 'expo/build/launch/AppLoading';
 import { Provider } from 'react-redux';
 import thunkMiddleware from 'redux-thunk';
 import { createStore, applyMiddleware } from 'redux';
+import logger from 'redux-logger';
 import reducer from './src/store/reducers';
 import bootstrap from './bootstrap';
 import SwitchNavigator from './src/navigation/SwitchNavigator';
+import firebase from './config/firebase';
 
 const middleware = applyMiddleware(thunkMiddleware);
 const store = createStore(reducer, middleware);
