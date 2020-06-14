@@ -25,6 +25,11 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     textAlign: 'center',
   },
+  switch: {
+    alignItems: 'center',
+    flex: 1,
+    justifyContent: 'center',
+  },
 });
 
 export default styles;

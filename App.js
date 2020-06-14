@@ -8,9 +8,8 @@ import logger from 'redux-logger';
 import reducer from './src/store/reducers';
 import bootstrap from './bootstrap';
 import SwitchNavigator from './src/navigation/SwitchNavigator';
-import firebase from './config/firebase';
 
-const middleware = applyMiddleware(thunkMiddleware);
+const middleware = applyMiddleware(thunkMiddleware, logger);
 const store = createStore(reducer, middleware);
 
 export default function App() {
@@ -31,12 +30,3 @@ export default function App() {
     </Provider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});

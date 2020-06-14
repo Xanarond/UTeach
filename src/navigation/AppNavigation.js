@@ -5,11 +5,13 @@ import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Ionicons } from '@expo/vector-icons';
 import StudentActiveScreen from '../screens/StudentActiveScreen';
-import NotificationScreen from '../screens/NotificationScreen';
-import ProfileScreen from '../screens/ProfileScreen';
 import StudentTrialScreen from '../screens/StudentTrialScreen';
 import StudentFirstLessonScreen from '../screens/StudentFirstLesson';
-import AboutScreen from '../screens/AboutScreen';
+import {
+  AboutNavigator, addStudentNavigator,
+  NotificationNavigator,
+  ProfileNavigator,
+} from './StackNavigator';
 
 /* const ProfileNavigator = createStackNavigator(
     {
@@ -22,7 +24,6 @@ const topTabsConfig = {
   StudentsActive: {
     screen: StudentActiveScreen,
     navigationOptions: {
-      header: 'Ученики',
       tabBarLabel: 'Абонемент',
       labelStyle: {
         fontSize: 12,
@@ -46,7 +47,7 @@ const topTabsConfig = {
   },
 };
 
-const TopTabNavigator = createMaterialTopTabNavigator(topTabsConfig);
+export const TopTabNavigator = createMaterialTopTabNavigator(topTabsConfig);
 
 const bottomTabsConfig = {
   Students: {
@@ -58,8 +59,17 @@ const bottomTabsConfig = {
       ),
     },
   },
+  addStudent: {
+    screen: addStudentNavigator,
+    navigationOptions: {
+      tabBarLabel: 'Добавить',
+      tabBarIcon: (info) => (
+        <Ionicons name="ios-add-circle-outline" size={25} color={info.tintColor} />
+      ),
+    },
+  },
   Notifications: {
-    screen: NotificationScreen,
+    screen: NotificationNavigator,
     navigationOptions: {
       tabBarLabel: 'Оповещения',
       tabBarIcon: (info) => (
@@ -68,7 +78,7 @@ const bottomTabsConfig = {
     },
   },
   Profile: {
-    screen: ProfileScreen,
+    screen: ProfileNavigator,
     navigationOptions: {
       tabBarLabel: 'Профиль',
       tabBarIcon: (info) => (
@@ -78,7 +88,7 @@ const bottomTabsConfig = {
   },
 };
 const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
-  activeTintColor: '#8e8e8e',
+  activeTintColor: '#4a4a4a',
   shifting: true,
   barStyle: {
     backgroundColor: '#386ac7',
@@ -90,12 +100,12 @@ const MainNavigator = createDrawerNavigator(
     PostTabs: {
       screen: BottomNavigator,
       navigationOptions: {
-        drawerLabel: 'Главная',
+        drawerLabel: 'Занятия',
         // drawerIcon: <Ionicons name='ios-star' />
       },
     },
     About: {
-      screen: AboutScreen,
+      screen: AboutNavigator,
       navigationOptions: {
         drawerLabel: 'О приложении',
       },

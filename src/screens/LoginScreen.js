@@ -1,8 +1,8 @@
 import React from 'react';
-import { Text, TextInput, View, TouchableOpacity } from 'react-native';
+import { Text, TextInput, View, TouchableOpacity} from 'react-native';
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { updateEmail, updatePassword, login, glogin } from '../store/actions/user'
+import { updateEmail, updatePassword, login, getUser } from '../store/actions/user'
 import firebase from 'firebase'
 import styles from '../../styles';
 
@@ -46,7 +46,7 @@ class LoginScreen extends React.Component {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators({ updateEmail, login, updatePassword, glogin }, dispatch)
+  return bindActionCreators({ updateEmail, login, updatePassword,  getUser }, dispatch)
 }
 
 const mapStateToProps = (state) => {

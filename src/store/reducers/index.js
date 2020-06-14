@@ -1,16 +1,5 @@
 import { combineReducers } from 'redux';
 
-const counter = (state = 115, action) => {
-  switch (action.type) {
-    case 'ADD':
-      return state + 1;
-    case 'SUBTRACT':
-      return state - 1;
-    default:
-      return state;
-  }
-};
-
 const user = (state = {}, action) => {
   switch (action.type) {
     case 'LOGIN':
@@ -30,9 +19,36 @@ const user = (state = {}, action) => {
   }
 };
 
+const student = (state = {}, action) => {
+  switch (action.type) {
+    case 'UPDATE_STUDENTFULLNAME':
+      return { ...state, sfullname: action.payload };
+    case 'UPDATE_STUDENTPHONE':
+      return { ...state, sphone: action.payload };
+    case 'UPDATE_STUDENTADRESS':
+      return { ...state, saddress: action.payload };
+    case 'UPDATE_CONTACTFULLNAME':
+      return { ...state, cfullname: action.payload };
+    case 'UPDATE_CONTACTPHONE':
+      return { ...state, cphone: action.payload };
+    case 'UPDATE_INSTRUMENT':
+      return { ...state, instrument: action.payload };
+    case 'UPDATE_PAYTYPE':
+      return { ...state, paytype: action.payload };
+    case 'UPDATE_TRIALLESSON':
+      return { ...state, triallesson: action.payload };
+    case 'UPDATE_ONETIMEPAY':
+      return { ...state, onetimepay: action.payload };
+    case 'GET_STUDENTS':
+      return { ...state, feed: action.payload };
+    default:
+      return state;
+  }
+};
+
 const rootReducer = combineReducers({
-  counter,
   user,
+  student,
 });
 
 export default rootReducer;
