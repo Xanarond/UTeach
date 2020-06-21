@@ -9,7 +9,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  addStudent, updateCFullName, updateCPhone,
+  addStudent, updateCFullName, updateComment, updateCPhone,
   updateSAdress,
   updateSFullName,
   updateSPhone,
@@ -59,14 +59,14 @@ class StudentAddScreen extends React.Component {
           style={styles.border}
           value={this.props.student.cfullname}
           onChangeText={text => this.props.updateCFullName(text)}
-          placeholder="Имя Контакта"
+          placeholder="Имя Контактного лица"
           textContentType='telephoneNumber'
         />
         <TextInput
           style={styles.border}
           value={this.props.student.cphone}
           onChangeText={text => this.props.updateCPhone(text)}
-          placeholder="Телефон Контакта"
+          placeholder="Телефон Контактного лица"
           textContentType='telephoneNumber'
         />
         <Text>Описание</Text>
@@ -78,7 +78,15 @@ class StudentAddScreen extends React.Component {
           onValueChange={value => this.props.updateTrialLesson(value)}
           onChange={value => this.toggleSwitch(value)}
         />
-
+        <TextInput
+          multiline
+          numberOfLines={4}
+          style={styles.border}
+          value={this.props.student.comment}
+          onChangeText={text => this.props.updateComment(text)}
+          placeholder="Коментарий"
+          textContentType='telephoneNumber'
+        />
         <TouchableOpacity style={styles.button} onPress={this.student}>
           <Text>Добавить ученика</Text>
         </TouchableOpacity>
@@ -95,6 +103,7 @@ const mapDispatchToProps = (dispatch) => {
     updateSAdress,
     updateCFullName,
     updateCPhone,
+    updateComment,
     updateTrialLesson,
   }, dispatch);
 };

@@ -20,11 +20,11 @@ export function StudentList({ student, navigation }) {
           <Thumbnail square source={{ uri: student.img }} />
         </Left>
         <Body>
-          <Text>{student.full_name}</Text>
-          <Text>{student.phone}</Text>
-          <Text>{student.address}</Text>
+          <Text>{student.StudentFullName}</Text>
+          <Text>{student.StudentAddress}</Text>
+          <Text>{student.StudentPhone}</Text>
           <Text note numberOfLines={1}>
-            {student.text}
+            {student.Comment}
           </Text>
         </Body>
         <Right>
@@ -40,6 +40,6 @@ export function StudentList({ student, navigation }) {
 const styles = StyleSheet.create({
   textWrap: {
     textAlign: 'center',
-    paddingVertical: 5,
+    paddingVertical: 2,
   },
 });

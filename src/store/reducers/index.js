@@ -31,14 +31,14 @@ const student = (state = {}, action) => {
       return { ...state, cfullname: action.payload };
     case 'UPDATE_CONTACTPHONE':
       return { ...state, cphone: action.payload };
+    case 'UPDATE_COMMENT':
+      return { ...state, comment: action.payload };
     case 'UPDATE_INSTRUMENT':
       return { ...state, instrument: action.payload };
     case 'UPDATE_PAYTYPE':
       return { ...state, paytype: action.payload };
     case 'UPDATE_TRIALLESSON':
       return { ...state, triallesson: action.payload };
-    case 'UPDATE_ONETIMEPAY':
-      return { ...state, onetimepay: action.payload };
     case 'GET_STUDENTS':
       return { ...state, feed: action.payload };
     default:

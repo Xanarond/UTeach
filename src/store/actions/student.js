@@ -41,11 +41,10 @@ export const updateTrialLesson = (input) => ({
   payload: input,
 });
 
-export const updateOneTimePay = (input) => ({
-  type: 'UPDATE_ONETIMEPAY',
+export const updateComment = (input) => ({
+  type: 'UPDATE_COMMENT',
   payload: input,
 });
-
 /* StudentAddress:
       uid: user.uid,
       StudentFullName: student.StudentFullName,
@@ -75,6 +74,7 @@ export const addStudent = () => async (dispatch, getState) => {
       ContactFullName: student.cfullname,
       ContactPhone: student.cphone,
       TrialLesson: student.triallesson,
+      Comment: student.comment,
       time: new Date(),
     };
     await db.collection('students').doc(id).set(add);
@@ -86,12 +86,14 @@ export const addStudent = () => async (dispatch, getState) => {
 
 export const getStudents = () => async (dispatch, getState) => {
   try {
-    const students = db.collection('students').get();
-
+    const { student } = getState();
     const array = [];
-    students.forEach((student) => {
-      array.push(student.data());
+    const students = db.collection('students').get().then((snapshot) => {
+      snapshot.forEach((doc) => {
+        array.push(doc.data());
+      });
     });
+    console.log(array);
     dispatch({ type: 'GET_STUDENTS', payload: array });
   } catch (e) {
     alert(e);

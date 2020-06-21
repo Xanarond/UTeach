@@ -11,6 +11,7 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingVertical: 10,
     alignItems: 'center',
+    textAlign: 'center',
     borderColor: '#d3d3d3',
     borderWidth: 1,
     borderRadius: 5,
@@ -29,6 +30,10 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     flex: 1,
     justifyContent: 'center',
+  },
+  scrollv: {
+    flex: 1,
+    marginHorizontal: 3,
   },
 });
 
