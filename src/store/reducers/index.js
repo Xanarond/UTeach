@@ -19,7 +19,7 @@ const user = (state = {}, action) => {
   }
 };
 
-const student = (state = {}, action) => {
+const student = (state = [], action) => {
   switch (action.type) {
     case 'UPDATE_STUDENTFULLNAME':
       return { ...state, sfullname: action.payload };
@@ -39,6 +39,8 @@ const student = (state = {}, action) => {
       return { ...state, paytype: action.payload };
     case 'UPDATE_TRIALLESSON':
       return { ...state, triallesson: action.payload };
+    case 'UPDATE_ABONEMENT':
+      return { ...state, subscription: action.payload };
     case 'GET_STUDENTS':
       return { ...state, feed: action.payload };
     default:

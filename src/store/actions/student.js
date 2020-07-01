@@ -31,13 +31,18 @@ export const updateInstrument = (input) => ({
   payload: input,
 });
 
-export const updatePayType = (input) => ({
-  type: 'UPDATE_PAYTYPE',
+export const updateOnePay = (input) => ({
+  type: 'UPDATE_ONEPay',
   payload: input,
 });
 
 export const updateTrialLesson = (input) => ({
   type: 'UPDATE_TRIALLESSON',
+  payload: input,
+});
+
+export const updateAbonement = (input) => ({
+  type: 'UPDATE_ABONEMENT',
   payload: input,
 });
 
@@ -73,7 +78,9 @@ export const addStudent = () => async (dispatch, getState) => {
       StudentAddress: student.saddress,
       ContactFullName: student.cfullname,
       ContactPhone: student.cphone,
+      Subscription: student.subscription,
       TrialLesson: student.triallesson,
+      OnePay: student.onepayment,
       Comment: student.comment,
       time: new Date(),
     };

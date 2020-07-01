@@ -9,7 +9,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import {
-  addStudent, updateCFullName, updateComment, updateCPhone,
+  addStudent,
+  updateAbonement,
+  updateCFullName,
+  updateComment,
+  updateCPhone,
+  updateOnePay,
   updateSAdress,
   updateSFullName,
   updateSPhone,
@@ -20,10 +25,17 @@ import styles from '../../styles';
 
 class StudentAddScreen extends React.Component {
 
-  state = {isChecked: false};
+  state = {trial: false, subscribe: false, onepay: false};
 
   toggleSwitch = value => {
-    this.setState({isChecked: !this.state.isChecked});
+    this.setState({trial: !this.state.trial});
+  };
+
+  toggleSwitch2 = value => {
+    this.setState({subscribe: !this.state.subscribe});
+  };
+  toggleSwitch3 = value => {
+    this.setState({onepay: !this.state.onepay});
   };
 
   student = () => {
@@ -69,14 +81,32 @@ class StudentAddScreen extends React.Component {
           placeholder="Телефон Контактного лица"
           textContentType='telephoneNumber'
         />
-        <Text>Описание</Text>
+        <Text>Пробное занятие</Text>
         <Switch
           style={styles.switch}
-          trackColor={{false: '#767577', true: '#85ff81'}}
+          trackColor={{false: '#235421', true: '#07fa00'}}
           ios_backgroundColor="#3e3e3e"
-          value={this.state.isChecked}
+          value={this.state.trial}
           onValueChange={value => this.props.updateTrialLesson(value)}
           onChange={value => this.toggleSwitch(value)}
+        />
+        <Text>Абонемент</Text>
+        <Switch
+          style={styles.switch}
+          trackColor={{false: '#2d395d', true: '#819cff'}}
+          ios_backgroundColor="#3e3e3e"
+          value={this.state.subscribe}
+          onValueChange={value => this.props.updateAbonement(value)}
+          onChange={value => this.toggleSwitch2(value)}
+        />
+        <Text>Разовая оплата</Text>
+        <Switch
+          style={styles.switch}
+          trackColor={{false: '#7c2d2d', true: '#ff000b'}}
+          ios_backgroundColor="#3e3e3e"
+          value={this.state.onepay}
+          onValueChange={value => this.props.updateOnePay(value)}
+          onChange={value => this.toggleSwitch3(value)}
         />
         <TextInput
           multiline
@@ -105,6 +135,8 @@ const mapDispatchToProps = (dispatch) => {
     updateCPhone,
     updateComment,
     updateTrialLesson,
+    updateAbonement,
+    updateOnePay
   }, dispatch);
 };
 

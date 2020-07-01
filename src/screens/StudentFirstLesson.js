@@ -1,19 +1,36 @@
 import React from 'react';
-import { FlatList } from 'react-native';
+import { FlatList, ScrollView } from 'react-native';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import { students } from '../../students';
 import { StudentList } from '../components/StudentList';
+import { getStudents } from '../store/actions/student';
 
-const StudentFirstLessonScreen = () => {
-  const data = students.filter(
-    (student) => student.firstLesson && !student.trialLesson,
-  );
-  return (
-    <FlatList
-      data={data}
-      keyExtractor={(student) => student.id.toString()}
-      renderItem={({ item }) => <StudentList student={item} />}
-    />
-  );
-};
+class StudentFirstLessonScreen extends React.Component {
+  componentDidMount() {
+    this.props.getStudents();
+  }
 
-export default StudentFirstLessonScreen;
+  render() {
+    console.log('trial', this.props.student.feed.filter((item) => item.TrialLesson === true));
+    return (
+      <ScrollView>
+        <FlatList
+          data={this.props.student.feed.filter((item) => item.TrialLesson === true)}
+          keyExtractor={(item) => item.id}
+          renderItem={({ item }) => <StudentList student={item} />}
+        />
+      </ScrollView>
+    );
+  }
+}
+
+
+const mapDispatchToProps = (dispatch) => bindActionCreators({ getStudents }, dispatch);
+
+const mapStateToProps = (state) => ({
+  student: state.student,
+  user: state.user,
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(StudentFirstLessonScreen);

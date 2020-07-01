@@ -4,8 +4,8 @@ import { createMaterialBottomTabNavigator } from 'react-navigation-material-bott
 import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Ionicons } from '@expo/vector-icons';
-import StudentActiveScreen from '../screens/StudentActiveScreen';
-import StudentTrialScreen from '../screens/StudentTrialScreen';
+import StudentAbonementScreen from '../screens/StudentAbonementScreen';
+import StudentOnePayScreen from '../screens/StudentOnePayScreen';
 import StudentFirstLessonScreen from '../screens/StudentFirstLesson';
 import {
   AboutNavigator, addStudentNavigator,
@@ -22,7 +22,7 @@ import {
 
 const topTabsConfig = {
   StudentsActive: {
-    screen: StudentActiveScreen,
+    screen: StudentAbonementScreen,
     navigationOptions: {
       tabBarLabel: 'Абонемент',
       labelStyle: {
@@ -34,7 +34,7 @@ const topTabsConfig = {
     },
   },
   StudentTrials: {
-    screen: StudentTrialScreen,
+    screen: StudentOnePayScreen,
     navigationOptions: {
       tabBarLabel: 'Разовая оплата',
     },
@@ -64,7 +64,11 @@ const bottomTabsConfig = {
     navigationOptions: {
       tabBarLabel: 'Добавить',
       tabBarIcon: (info) => (
-        <Ionicons name="ios-add-circle-outline" size={25} color={info.tintColor} />
+        <Ionicons
+          name="ios-add-circle-outline"
+          size={25}
+          color={info.tintColor}
+        />
       ),
     },
   },

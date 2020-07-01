@@ -10,7 +10,7 @@ class LoginScreen extends React.Component {
   componentDidMount = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if(user){
-        this.props.navigation.navigate('Home')
+        this.props.navigation.navigate('StudentsActive')
       }else {
         this.props.navigation.navigate('Auth')
       }

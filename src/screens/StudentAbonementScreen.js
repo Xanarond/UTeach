@@ -4,22 +4,21 @@ import { HeaderButtons, Item } from 'react-navigation-header-buttons';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { StudentList } from '../components/StudentList';
-import { students } from '../../students';
 import { AppHeaderIcon } from '../components/AppHeaderIcon';
 import { getStudents } from '../store/actions/student';
 
-class StudentActiveScreen extends React.Component {
+class StudentAbonementScreen extends React.Component {
   componentDidMount() {
     this.props.getStudents();
   }
 
   render() {
     // const data = students.filter((student) => student.firstLesson);
-    // console.log(this.props.student.feed);
+    console.log('sub', this.props.student.feed.filter((item) => item.Subscription === true));
     return (
       <ScrollView>
         <FlatList
-          data={this.props.student.feed}
+          data={this.props.student.feed.filter((item) => item.Subscription === true)}
           keyExtractor={(item) => item.id}
           renderItem={({ item }) => <StudentList student={item} />}
         />
@@ -28,7 +27,7 @@ class StudentActiveScreen extends React.Component {
   }
 }
 
-StudentActiveScreen.navigationOptions = ({ navigation }) => ({
+StudentAbonementScreen.navigationOptions = ({ navigation }) => ({
   headerTitle: 'Занятия',
   headerRight: (
     <HeaderButtons HeaderButtonComponent={AppHeaderIcon}>
@@ -58,4 +57,4 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(StudentActiveScreen);
+export default connect(mapStateToProps, mapDispatchToProps)(StudentAbonementScreen);
