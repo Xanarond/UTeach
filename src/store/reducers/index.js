@@ -39,6 +39,8 @@ const student = (state = [], action) => {
       return { ...state, paytype: action.payload };
     case 'UPDATE_TRIALLESSON':
       return { ...state, triallesson: action.payload };
+    case 'UPDATE_ONEPAYMENT':
+      return { ...state, onepayment: action.payload };
     case 'UPDATE_ABONEMENT':
       return { ...state, subscription: action.payload };
     case 'GET_STUDENTS':

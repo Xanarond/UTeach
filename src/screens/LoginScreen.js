@@ -33,7 +33,7 @@ class LoginScreen extends React.Component {
           placeholder='Password'
           secureTextEntry={true}
         />
-        <TouchableOpacity style={styles.button} onPress={() => this.props.login()}>
+        <TouchableOpacity style={styles.button_log} onPress={() => this.props.login()}>
           <Text>Login</Text>
         </TouchableOpacity>
         <Text>OR</Text>

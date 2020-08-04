@@ -1,26 +1,35 @@
 import React from 'react';
-import { FlatList, ScrollView } from 'react-native';
+import { FlatList, Text } from 'react-native';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { students } from '../../students';
 import { StudentList } from '../components/StudentList';
 import { getStudents } from '../store/actions/student';
 
 class StudentFirstLessonScreen extends React.Component {
+  constructor(props) {
+    super(props);
+    console.log(this.props);
+    this.state = {
+      loading: true,
+    };
+  }
+
   componentDidMount() {
+    if (this.props.student !== 0) {
+      this.setState({ loading: false });
+    }
     this.props.getStudents();
   }
 
   render() {
-    console.log('trial', this.props.student.feed.filter((item) => item.TrialLesson === true));
-    return (
-      <ScrollView>
-        <FlatList
-          data={this.props.student.feed.filter((item) => item.TrialLesson === true)}
-          keyExtractor={(item) => item.id}
-          renderItem={({ item }) => <StudentList student={item} />}
-        />
-      </ScrollView>
+    const { loading } = this.state;
+    // console.log('trial', this.props.student.feed.filter((item) => item.TrialLesson === true));
+    return (loading) ? <Text>Loading ...</Text> : (
+      <FlatList
+        data={this.props.student.feed.filter((item) => item.TrialLesson === true)}
+        keyExtractor={(item) => item.id}
+        renderItem={({ item }) => <StudentList student={item} />}
+      />
     );
   }
 }

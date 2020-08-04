@@ -25,7 +25,10 @@ import styles from '../../styles';
 
 class StudentAddScreen extends React.Component {
 
-  state = {trial: false, subscribe: false, onepay: false};
+  constructor(props) {
+    super(props);
+    this.state = {trial: false, subscribe: false, onepay: false};
+  }
 
   toggleSwitch = value => {
     this.setState({trial: !this.state.trial});
@@ -46,7 +49,7 @@ class StudentAddScreen extends React.Component {
   render() {
     // console.log('State:', this.state.isChecked);
     return (
-      <ScrollView>
+      <ScrollView style={styles.scrolly}>
         <TextInput
           style={styles.border}
           value={this.props.student.sfullname}
@@ -81,7 +84,7 @@ class StudentAddScreen extends React.Component {
           placeholder="Телефон Контактного лица"
           textContentType='telephoneNumber'
         />
-        <Text>Пробное занятие</Text>
+        <Text style={styles.text}>Пробное занятие</Text>
         <Switch
           style={styles.switch}
           trackColor={{false: '#235421', true: '#07fa00'}}
@@ -90,7 +93,7 @@ class StudentAddScreen extends React.Component {
           onValueChange={value => this.props.updateTrialLesson(value)}
           onChange={value => this.toggleSwitch(value)}
         />
-        <Text>Абонемент</Text>
+        <Text style={styles.text}>Абонемент</Text>
         <Switch
           style={styles.switch}
           trackColor={{false: '#2d395d', true: '#819cff'}}
@@ -99,7 +102,7 @@ class StudentAddScreen extends React.Component {
           onValueChange={value => this.props.updateAbonement(value)}
           onChange={value => this.toggleSwitch2(value)}
         />
-        <Text>Разовая оплата</Text>
+        <Text style={styles.text}>Разовая оплата</Text>
         <Switch
           style={styles.switch}
           trackColor={{false: '#7c2d2d', true: '#ff000b'}}

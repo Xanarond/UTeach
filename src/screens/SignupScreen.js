@@ -40,7 +40,7 @@ class SignupScreen extends React.Component {
           onChangeText={input => this.props.updateBio(input)}
           placeholder='Bio'
         />
-        <TouchableOpacity style={styles.button} onPress={() => this.signup()}>
+        <TouchableOpacity style={styles.button_log} onPress={() => this.signup()}>
           <Text>Signup</Text>
         </TouchableOpacity>
       </View>
