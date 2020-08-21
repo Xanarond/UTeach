@@ -34,7 +34,6 @@ class StudentFirstLessonScreen extends React.Component {
   }
 }
 
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({ getStudents }, dispatch);
 
 const mapStateToProps = (state) => ({

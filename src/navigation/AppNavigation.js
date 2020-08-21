@@ -1,63 +1,26 @@
 import React from 'react';
 import { createAppContainer } from 'react-navigation';
 import { createMaterialBottomTabNavigator } from 'react-navigation-material-bottom-tabs';
-import { createMaterialTopTabNavigator } from 'react-navigation-tabs';
 import { createDrawerNavigator } from 'react-navigation-drawer';
 import { Ionicons } from '@expo/vector-icons';
-import StudentAbonementScreen from '../screens/StudentAbonementScreen';
-import StudentOnePayScreen from '../screens/StudentOnePayScreen';
-import StudentFirstLessonScreen from '../screens/StudentFirstLesson';
 import {
   AboutNavigator, addStudentNavigator,
   NotificationNavigator,
   ProfileNavigator,
+  StudentNavigator,
+  navigatorOptions,
 } from './StackNavigator';
-
-/* const ProfileNavigator = createStackNavigator(
-    {
-        Main: StudentActiveScreen,
-        Profile: StudentProfileScreen
-    }
-) */
-
-const topTabsConfig = {
-  StudentsActive: {
-    screen: StudentAbonementScreen,
-    navigationOptions: {
-      tabBarLabel: 'Абонемент',
-      labelStyle: {
-        fontSize: 12,
-      },
-      tabStyle: {
-        width: 100,
-      },
-    },
-  },
-  StudentTrials: {
-    screen: StudentOnePayScreen,
-    navigationOptions: {
-      tabBarLabel: 'Разовая оплата',
-    },
-  },
-  Booked: {
-    screen: StudentFirstLessonScreen,
-    navigationOptions: {
-      tabBarLabel: 'Пробное занятие',
-    },
-  },
-};
-
-export const TopTabNavigator = createMaterialTopTabNavigator(topTabsConfig);
 
 const bottomTabsConfig = {
   Students: {
-    screen: TopTabNavigator,
+    screen: StudentNavigator,
     navigationOptions: {
       tabBarLabel: 'Ученики',
       tabBarIcon: (info) => (
         <Ionicons name="ios-people" size={25} color={info.tintColor} />
       ),
     },
+    navigatorOptions,
   },
   addStudent: {
     screen: addStudentNavigator,
@@ -71,6 +34,7 @@ const bottomTabsConfig = {
         />
       ),
     },
+    navigatorOptions,
   },
   Notifications: {
     screen: NotificationNavigator,
@@ -80,6 +44,7 @@ const bottomTabsConfig = {
         <Ionicons name="ios-notifications" size={25} color={info.tintColor} />
       ),
     },
+    navigatorOptions,
   },
   Profile: {
     screen: ProfileNavigator,
@@ -89,6 +54,7 @@ const bottomTabsConfig = {
         <Ionicons name="ios-person" size={25} color={info.tintColor} />
       ),
     },
+    navigatorOptions,
   },
 };
 const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
@@ -97,6 +63,7 @@ const BottomNavigator = createMaterialBottomTabNavigator(bottomTabsConfig, {
   barStyle: {
     backgroundColor: '#386ac7',
   },
+  navigatorOptions,
 });
 
 const MainNavigator = createDrawerNavigator(

@@ -1,5 +1,4 @@
 import firebase from 'firebase';
-import ENV from '../env';
 
 require('firebase/firestore');
 
